@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-10">
+        <app-shoping-edit (inDelete)="onDelete($event)" (emitIng) = "onAdded($event)" [index]="index" [ingre]="ingredient" ></app-shoping-edit>
+        <hr>
+        <ul class="list-group">
+            <a class="list-group-item clearfix" 
+            *ngFor="let ingredient of ingredient, let i = index" 
+            (click)="onEdit(i)">
+            {{ingredient.name}} ({{ingredient.amount}})
+            </a>
+        </ul>
+    </div>
+</div>
