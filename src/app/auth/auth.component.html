@@ -1,0 +1,21 @@
+<div class="container" style="text-align: center;">
+    <div class="row">
+        <div class="col-xs-12">
+        <div style="text-align: center;" *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <form #form = "ngForm" (ngSubmit)="onSubmit(form)" *ngIf="!isLoading">
+            <div *ngIf="error!=null" class="alert alert-danger">
+                <p>{{error}}</p>
+            </div>
+            <h3>LOGIN</h3>
+            <input type="text" placeholder="Email" id="email" ngModel name="email" required email>
+            <br>
+            <input type="password" placeholder="Password" id="password" ngModel name="password" required minlength="6">
+            <br>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">{{ isLoginMode ? 'Login' : 'Sign up' }}</button>
+            <button class="btn btn-primary" type="button" (click)="onSwitch()">Switch to {{isLoginMode ? 'Sign up' : 'Login'}}</button>
+        </form>
+        </div>
+    </div>
+</div>
